@@ -4,9 +4,9 @@ from app import app
 @pytest.fixture
 def client():
     # Configura o cliente de teste para a aplicação Flask
+    app = create_app()
     app.config['TESTING'] = True
-    with app.test_client() as client:
-        yield client
+    return app.test_client()
 
 def test_home_route(client):
     # Testa se a rota inicial retorna a mensagem esperada e status 200
