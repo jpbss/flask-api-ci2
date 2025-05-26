@@ -1,18 +1,18 @@
 from flask import Blueprint, jsonify
 
-app = Blueprint('app', __name__)
+api = Blueprint('api', __name__)
     
-@app.route('/')
+@api.route('/')
 def home():
     return jsonify(message="Olá, Flask! Esta é a API de exemplo.")
 
-@app.route('/saudacao/<string:nome>')
+@api.route('/saudacao/<string:nome>')
 def saudacao(nome):
     if not nome:
         return jsonify(error="Nome não fornecido"), 400
     return jsonify(message=f"Olá, {nome}!")
 
-@app.route('/somar', methods=['POST'])
+@api.route('/somar', methods=['POST'])
 def somar():
     data = request.get_json()
     if not data or 'num1' not in data or 'num2' not in data:
