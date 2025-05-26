@@ -6,6 +6,11 @@ pipeline {
     }
 
     stages {
+    	stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('Setup') {
             steps {
                 sh 'python3 -m venv $VENV'
@@ -16,7 +21,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh '. $VENV/bin/activate && PYTHONPATH=. pytest'	
-				    }
+	    }
         }
     }
 }
