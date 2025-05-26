@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 
-bp = Blueprint('main', __name__)
+app = Blueprint('app', __name__)
     
 @app.route('/')
 def home():
